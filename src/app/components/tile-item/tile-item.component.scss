@@ -1,0 +1,30 @@
+.no-cursor {
+  cursor: none !important;
+}
+
+.tile-item {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: block !important;
+  z-index: 1;
+  -webkit-transition: background-image 0.3s ease-in-out;
+  transition: background-image 0.3s ease-in-out;
+  //  background-image: url("../../../assets/images/card-hidden.jpg")   ;
+  background-size: cover;
+  img {
+    border-radius: 0.5rem;
+    display: block;
+    width: 100%;
+
+    z-index: -1;
+    height: auto;
+    opacity: 0;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+}

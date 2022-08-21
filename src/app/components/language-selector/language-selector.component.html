@@ -1,0 +1,20 @@
+<div  >
+
+  <div ngbDropdown>
+    <div id="dropdownBasic1" aria-labelledby="language-selector" ngbDropdownToggle> 
+      <img  [height]="25"
+       src="assets/icons/traducir.svg" alt=""> &nbsp; <span class="d-none d-md-inline">{{ 'language-selector.title' | translate }}</span>     </div> 
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+      <ng-container *ngFor="let lang of langKeys">
+        <button ngbDropdownItem class="dropdown-item" (click)="changeLanguage(lang)">
+          <img [src]="getLanguageIcon(lang) | async">
+          <span class="d-none d-md-inline">{{ getLanguageName(lang) }}</span>
+        </button>
+      </ng-container>
+
+    </div>
+  </div>
+
+
+</div>
