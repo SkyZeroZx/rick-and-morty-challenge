@@ -1,7 +1,6 @@
 {
-  "name": "rick-and-morty-challenge",
-  "version": "1.0.0",
-  "description": "Rick & Morty Challenge by SkyZeroZx",
+  "name": "rick_and_morty_challenge",
+  "version": "1.0.0", 
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
