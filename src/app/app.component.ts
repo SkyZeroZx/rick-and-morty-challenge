@@ -3,7 +3,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { GameService } from './services/game.service';
-import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +10,17 @@ import { ThemeService } from './services/theme.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  // Event for install PWA
+  public promptEvent : any;
+  public isInstalled: boolean = true;
   /**
    * constructor method
    * @param gameService instance for the services that manage the game
    * @param translate instance for the service of translations
-   * @param themeService instance for the service of theme
    */
   constructor(
     private gameService: GameService,
-    private translate: TranslateService,
-    private themeService: ThemeService
+    private translate: TranslateService
   ) {}
 
   /**
@@ -39,13 +39,39 @@ export class AppComponent {
     });
   }
 
-  /**
-   * catch the event install PWA
-   */
+  // Listener for event install PWA
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
     e.preventDefault();
-    this.themeService.promptEvent = e;
+    this.promptEvent = e;
+  }
+
+
+  //  prompt event for install
+  installPWA() {
+    this.promptEvent
+      .prompt()
+      .then((res) => {
+        if (res.outcome == 'accepted') {
+          this.isInstalled = false;
+        }
+      })
+      .catch((_err) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+        });
+      });
+  }
+
+  // Validate install pwa and standalone mode for display button
+  shouldInstall(): boolean {
+    return !this.isRunningStandalone() && this.promptEvent && this.isInstalled;
+  }
+
+  //Validate running in standalone mode
+  isRunningStandalone(): boolean {
+    return window.matchMedia('(display-mode: standalone)').matches;
   }
 
   /**

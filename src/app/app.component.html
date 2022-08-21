@@ -7,25 +7,30 @@
       <!-- game grid -->
       <app-game-grid *ngIf="(getGameStarted() | async)"></app-game-grid>
     </div>
-    <div class="col-12 col-md-3 py-2 text-center"  >
-  
-        <app-language-selector></app-language-selector>
-        <br>
-        <!-- level selector -->
-        <app-level-selector></app-level-selector>
-        <br />
-        <!-- play / finish button -->
-        <app-game-buttons></app-game-buttons>
-        <br />
-  
-        <!-- game crono -->
-        <app-game-crono></app-game-crono>
-        <!-- game moves -->
-        <app-game-movements></app-game-movements>
-        <br>
+    <div class="col-12 col-md-3 py-2 text-center">
 
- 
- 
+      <app-language-selector></app-language-selector>
+      <br />
+      <!-- level selector -->
+      <app-level-selector></app-level-selector>
+      <br />
+      <!-- play / finish button -->
+      <app-game-buttons></app-game-buttons>
+      <br />
+
+      <!-- game crono -->
+      <app-game-crono></app-game-crono>
+      <!-- game moves -->
+      <app-game-movements></app-game-movements>
+      <br />
+
+     <!-- install pwa button -->
+      <button type="button" class="btn btn-secondary btn-block rounded-pill" (click)=" installPWA()"
+        *ngIf="shouldInstall()">
+        <i class="fa fa-cloud-download"></i> {{ 'game-buttons.install' |
+        translate }}
+      </button>
+
     </div>
   </div>
   <div class="row">

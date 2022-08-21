@@ -107,7 +107,6 @@ export class TileItemComponent implements OnInit, OnDestroy {
    * @param event event emitted on click with the mouse
    */
   showTile(event: Event, title: any): void {
-    console.log('evento is ', title);
     event.stopPropagation();
     if (
       !this.gameService.tilesBlocked &&

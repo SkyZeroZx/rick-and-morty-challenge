@@ -55,7 +55,7 @@
   },
   "game-info": {
     "title": "Information",
-    "text-1": "Classic memory game where you have to match the same cards, discovering two in each turn.",
+    "text-1": "Memory game inspired by Rick And Morty, where we must match the same cards",
     "text-2": "There are three levels of difficulty.",
     "levels-list": {
       "easy": {
@@ -75,8 +75,7 @@
       "intro": "These are the data of your last game.",
       "moves": "You have made these moves:",
       "time": "You have used this time:"
-    },
-    "loading-tiles": "Loading images..."
+    }
   },
   "resources-info": {
     "text-1": "This game was made by"

@@ -55,7 +55,7 @@
   },
   "game-info": {
     "title": "Información",
-    "text-1": "Clásico juego de memoria donde se han de emparejar las tarjetas iguales, descubriendo dos en cada turno.",
+    "text-1": "Juego de memoria inspirado en Rick And Morty , donde debemos emparejar tarjetas iguales",
     "text-2": "Hay tres niveles de dificultad.",
     "levels-list": {
       "easy": {
@@ -75,8 +75,7 @@
       "intro": "Estos son los datos de tú ultima partida.",
       "moves": "Has usado estos movimientos:",
       "time": "Has usado este tiempo:"
-    },
-    "loading-tiles": "Cargando imagenes..."
+    }
   },
   "resources-info": {
     "text-1": "Este juego fue hecho por"

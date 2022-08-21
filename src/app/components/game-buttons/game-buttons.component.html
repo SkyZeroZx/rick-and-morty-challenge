@@ -1,29 +1,14 @@
 <div class="row">
   <div class="col-6 col-md-12">
-
     <div class="d-flex justify-content-center">
       <button type="button" class="btn btn-primary btn-block rounded-pill" [disabled]="(gameService.started | async)"
-        (click)="playGame()">{{ 'game-buttons.play.title' | translate }}</button>
-
-      &nbsp;&nbsp;&nbsp;
+        (click)="playGame()"><i class="fa fa-play" aria-hidden="true"></i> {{ 'game-buttons.play.title' | translate
+        }}</button>
       <button type="button" class="btn btn-info btn-block rounded-pill"
-        [disabled]="(gameService.started | async) === false" (click)="stopGame()">{{ 'game-buttons.finish.title' |
+        [disabled]="(gameService.started | async) === false" (click)="stopGame()"><i class="fa-solid fa-stop"></i> {{
+        'game-buttons.finish.title' |
         translate }}</button>
-
-
-    </div>
-
-  </div>
-</div>
-
-<div class="row"  >
-  <br>
-  <div class="col-6 col-md-12">
-    <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-secondary btn-block rounded-pill" (click)=" installPwa()">
-        <i class="fa fa-cloud-download"></i> {{ 'game-buttons.install' |
-        translate }}
-      </button>
     </div>
   </div>
 </div>
+ 

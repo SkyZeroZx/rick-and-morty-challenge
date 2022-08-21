@@ -2,10 +2,13 @@
   <div class="row">
     <div class="col-12 text-center">
       
-      <h4>{{ 'game-info.loading-tiles' | translate }}</h4>
+ 
+      <img  class="loading" src="assets/images/loading.png"/> 
     </div>
   </div>  
 </ng-container>
+
+
 <div class="grid-container" style="height: 0; opacity: 0;" #gridContainer>  
   <div *ngFor="let tile of getGameTiles()" 
     class="grid-item" [ngClass]="getLevelClass()">

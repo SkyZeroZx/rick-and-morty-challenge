@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, timer, Subject } from 'rxjs';
 import { takeUntil, map, repeatWhen } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 import { levels, levelNames } from '../enums/enums';
 import { TileImage } from '../interfaces/tile-image';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -38,12 +40,25 @@ export class GameService {
   private playedMoves$: number;
   private totalGameTiles$: number;
   private loadedGameTiles$: number;
+  private totalCaracters: number;
 
   /**
    * constructor method
    */
-  constructor() {
-    this.initGameTiles();
+  constructor(private apiService: ApiService) {
+    this.apiService.getCharacters().subscribe({
+      next: (res) => {
+        // Set count value is total caracters
+        this.totalCaracters = res.info.count;
+      },
+      error: (err) => {
+        // In case of Error thrown sweetalert
+        Swal.fire({
+          icon: 'error',
+          text: err.message,
+        });
+      },
+    });
   }
 
   /* SETTERS & GETTERS  */
@@ -140,9 +155,10 @@ export class GameService {
     this.tilesBlocked$ = false;
     this.gameTilesKeys$ = [];
     while (this.gameTilesKeys$.length < Math.pow(levels.hard, 2) / 2) {
-      this.gameTilesKeys$.push(Math.floor(Math.random() * 826 + 1).toString());
+      this.gameTilesKeys$.push(
+        Math.floor(Math.random() * this.totalCaracters + 1).toString()
+      );
     }
-    console.log(' mi arreglo title is ', this.gameTilesKeys$);
   }
 
   /**
@@ -157,7 +173,6 @@ export class GameService {
     const images = Array()
       .concat(this.gameTilesKeys$.slice(0, totalImages))
       .concat(this.gameTilesKeys$.slice(0, totalImages));
-    console.log('images ', images);
     this.tiles$ = Array(this.totalGameTiles$)
       .fill('')
       .map(() => {
@@ -169,7 +184,6 @@ export class GameService {
           path: `https://rickandmortyapi.com/api/character/avatar/${tileId}.jpeg`,
           fixed: false,
         };
-        console.log('tile is ', tileId);
         return tile;
       });
   }
