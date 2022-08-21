@@ -2,19 +2,21 @@
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
- 
-body{
 
-    font-family: 'Roboto', sans-serif;
-    background-color: black;
-    color: whitesmoke
+body {
+  font-family: "Roboto", sans-serif;
+ 
+  background-image: url("assets/images/background-body.gif");
+  color: whitesmoke;
+  background-size: cover;
+  vertical-align: top;
+  background-position: center center;
 }
 
 i {
-    color : whitesmoke;
+  color: whitesmoke;
 }
 
-
 .text-center {
-    color : whitesmoke;
+  color: whitesmoke;
 }
