@@ -14,3 +14,9 @@ export enum languages {
   es,
   en,
 }
+
+
+export enum tileStates {
+  show,
+  hidden,
+}

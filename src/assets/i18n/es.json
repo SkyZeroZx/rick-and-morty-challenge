@@ -33,7 +33,8 @@
     },
     "finish": {
       "title": "Finalizar"
-    }
+    },
+    "install" : "Instalar"
   },
   "game-crono": {
     "title": "Tiempo de juego"

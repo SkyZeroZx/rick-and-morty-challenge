@@ -7,22 +7,25 @@
       <!-- game grid -->
       <app-game-grid *ngIf="(getGameStarted() | async)"></app-game-grid>
     </div>
-    <div class="col-12 col-md-3 py-2" >
-      <app-language-selector></app-language-selector>
-      <br>
-      <!-- level selector -->              
-      <app-level-selector></app-level-selector>      
-      <br/>
-      <!-- play / finish button -->
-      <app-game-buttons></app-game-buttons>
-      <br/>
-      
-      <!-- game crono -->
-      <app-game-crono></app-game-crono>
-      <!-- game moves -->
-      <app-game-movements></app-game-movements>
-      <br>
-     
+    <div class="col-12 col-md-3 py-2 text-center"  >
+  
+        <app-language-selector></app-language-selector>
+        <br>
+        <!-- level selector -->
+        <app-level-selector></app-level-selector>
+        <br />
+        <!-- play / finish button -->
+        <app-game-buttons></app-game-buttons>
+        <br />
+  
+        <!-- game crono -->
+        <app-game-crono></app-game-crono>
+        <!-- game moves -->
+        <app-game-movements></app-game-movements>
+        <br>
+
+ 
+ 
     </div>
   </div>
   <div class="row">
@@ -30,9 +33,8 @@
       {{ 'resources-info.text-1' | translate }}
     </div>
     <div class="col-12">
-      <a href="https://github.com/SkyZeroZx"
-        style="color:#5e72e4; font-weight: 600!important;"
-      class="text-decoration-none" title="SkyZeroZx" target="_blank">&copy; SkyZeroZx</a>
+      <a href="https://github.com/SkyZeroZx" class="text-decoration-none" title="SkyZeroZx" target="_blank">&copy;
+        SkyZeroZx</a>
     </div>
-  </div>  
+  </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GameService } from 'src/app/services/game.service';
 import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
+import { ThemeService } from '../../services/theme.service';
 
 const ID_ACCEPT_BUTTON = 'accept-button';
 const ID_CANCEL_BUTTON = 'cancel-button';
@@ -16,12 +17,13 @@ export class GameButtonsComponent implements OnInit {
   /**
    * constructor method
    * @param gameService instance of the service that manage the game
-   * @param modalDialogService instance of the service for the modal dialog
+   * @param themeService instance of the service for Theme Service
    * @param translate instance of the service for translations
    */
   constructor(
     public gameService: GameService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private themeService: ThemeService
   ) {}
 
   /**
@@ -64,5 +66,20 @@ export class GameButtonsComponent implements OnInit {
         this.gameService.restartCrono();
       }
     });
+  }
+
+  // Method for call prompt install PWA
+  installPwa() {
+    this.themeService.getInstallPwa.prompt();
+  }
+
+  // Method for validate installed PWA
+  shouldInstall(): boolean {
+    return !this.isRunningStandalone() && this.themeService.getInstallPwa;
+  }
+
+  // Method for validate standalone mode
+  isRunningStandalone(): boolean {
+    return window.matchMedia('(display-mode: standalone)').matches;
   }
 }

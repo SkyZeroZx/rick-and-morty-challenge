@@ -1,17 +1,25 @@
 import {
-  Component, OnInit, Input,
-  ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef,
-  Renderer2, ViewChild, ElementRef,
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  ChangeDetectorRef,
+  Renderer2,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
 import { TileImage } from 'src/app/interfaces/tile-image';
 import { GameService } from 'src/app/services/game.service';
-import { trigger, style, state, transition, animate } from '@angular/animations';
+import {
+  trigger,
+  style,
+  state,
+  transition,
+  animate,
+} from '@angular/animations';
 import { Subscription } from 'rxjs';
-
-enum tileStates {
-  show,
-  hidden,
-}
+import { tileStates } from 'src/app/enums/enums';
 
 @Component({
   selector: 'app-tile-item',
@@ -22,13 +30,16 @@ enum tileStates {
     trigger('tileAnimation', [
       state(tileStates.show.toString(), style({ opacity: 0 })),
       state(tileStates.hidden.toString(), style({ opacity: 0 })),
-      transition(`${tileStates.show} <=> ${tileStates.hidden}`, animate('300ms ease-in')),
+      transition(
+        `${tileStates.show} <=> ${tileStates.hidden}`,
+        animate('300ms ease-in')
+      ),
     ]),
-  ]
+  ],
 })
 export class TileItemComponent implements OnInit, OnDestroy {
-  defaultImg : string = "../../../assets/images/card-hidden.jpg";
-  background : string  = "../../../assets/images/card-hidden.jpg";
+  hiddenCard: string = '../../../assets/images/card-hidden.jpg';
+  backgroundCard: string = '../../../assets/images/card-hidden.jpg';
   @Input() tile: TileImage;
   @ViewChild('tileRef') tileRef: ElementRef;
 
@@ -45,8 +56,8 @@ export class TileItemComponent implements OnInit, OnDestroy {
   constructor(
     private gameService: GameService,
     private cdr: ChangeDetectorRef,
-    private renderer: Renderer2,
-  ) { }
+    private renderer: Renderer2
+  ) {}
 
   /**
    * ngOnInit
@@ -56,7 +67,7 @@ export class TileItemComponent implements OnInit, OnDestroy {
     this.hideTileSubscription = this.gameService.hideTiles.subscribe(() => {
       if (this.tileState === tileStates.show && !this.tile.fixed) {
         this.tileState = tileStates.hidden;
-        this.background = this.defaultImg
+        this.backgroundCard = this.hiddenCard;
         this.cdr.markForCheck();
       }
     });
@@ -95,17 +106,20 @@ export class TileItemComponent implements OnInit, OnDestroy {
    * fires when the user clicks on a tile and shows the image
    * @param event event emitted on click with the mouse
    */
-  showTile(event: Event , title: any): void {
-    console.log('evento is ' , title )
+  showTile(event: Event, title: any): void {
+    console.log('evento is ', title);
     event.stopPropagation();
-    if (!this.gameService.tilesBlocked && this.tileState === tileStates.hidden) {
+    if (
+      !this.gameService.tilesBlocked &&
+      this.tileState === tileStates.hidden
+    ) {
       this.gameService.tilesBlocked = true;
-      this.background = title.path
-       this.tileState = tileStates.show;
+      this.backgroundCard = title.path;
+      this.tileState = tileStates.show;
     }
   }
 
-  blockTile( ): void {
+  blockTile(): void {
     this.hideCursor();
   }
 
