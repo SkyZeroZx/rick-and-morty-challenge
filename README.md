@@ -1,27 +1,61 @@
-# RickAndMortyChallenge
+# Rick And Morty Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+Este proyecto fue realizado como parte del Rick And Morty Challenge de Gentleman Programming ("https://cutt.ly/JXUwtTa")
 
-## Development server
+## Comenzando 🚀
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
-## Code scaffolding
+_Puede visualizar una Demo del Proyecto en el siguiente enlace : https://rick-and-morty-challenge-tau.vercel.app/_
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Ejecutando como PWA 👨🏻‍💻
 
-## Build
+_Para ejecutar como PWA(Progressive Web App) , previamente debe tenerse instalado la libreria http-serve_
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+npm install --global http-server
+```
 
-## Running unit tests
+_Una vez instalada proceder a ejecutar el siguiente comando , que nos permite ejecutar en entorno local nuestra PWA_
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+ng build --configuration production
+```
 
-## Running end-to-end tests
+_Posteriormente ejecutar el comando para ejecutar en localhost en el puerto 8080 , donde podra probar las caracteristias de una PWA_
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+http-server -p 8080 -c-1 dist/
+```
 
-## Further help
+## Despliegue 📦
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+_Para realizar el despligue a produccion del proyecto ejecutar el siguiente comando_
+
+```
+ng build --configuration production
+```
+
+_El cual creara la carpeta "dist" en la raiz de nuestro proyecto el cual podemos desplegar en cualquier servidor que ejecute HTML CSS y JS_
+
+_A su vez en un hosting con certificado HTTPS se podra ejecutar como una PWA que se podra "instalar"_
+
+## Construido con 🛠️
+
+_Las herramientas utilizadas son:_
+
+- [Angular](https://angular.io/docs) - El Framework para Desarrollo Web
+- [NPM](https://www.npmjs.com/) - Manejador de dependencias
+- [Visual Studio Code](https://code.visualstudio.com/) - Editor de Codigo
+- [Prettier](https://prettier.io/) - Formateador de Codigo
+- [TabNine](https://www.tabnine.com/) - Autocompletador de Codigo
+
+## Versionado 📌
+
+Usamos [GIT](https://git-scm.com/) para el versionado.
+
+## Autor✒️
+
+- **Jaime Burgos Tejada** - _Developer_
+- [SkyZeroZx](https://github.com/SkyZeroZx)
+- Email : jaimeburgostejada@gmail.com

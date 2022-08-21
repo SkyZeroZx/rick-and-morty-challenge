@@ -1,5 +1,5 @@
 {
-  "name": "rick_and_morty_challenge",
+  "name": "rick-and-morty-challenge",
   "version": "1.0.0", 
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start:pwa": "ng build --prod && http-server -p 8080 -c-1 dist/"
+    "start:pwa": "ng build --configuration production && http-server -p 8080 -c-1 dist/"
   },
   "private": true,
   "dependencies": {
