@@ -1,5 +1,6 @@
-<div class="tile-item" (click)="showTile($event,tile)" style="background-image: url({{backgroundCard}});" #tileRef>
+<div class="tile-item" (click)="showTile($event,tile)" [@tileAnimation]="tileAnimationState()"
+  (@tileAnimation.start)="blockTile( )" (@tileAnimation.done)="checkTile(tile)"
+  style="background-image: url({{backgroundCard}});" #tileRef>
 
-  <img [@tileAnimation]="tileAnimationState()" (@tileAnimation.start)="blockTile( )"
-    (@tileAnimation.done)="checkTile(tile)" [src]="tile.path" (load)="tileLoaded()">
+  <img [src]="tile.path" (load)="tileLoaded()">
 </div>

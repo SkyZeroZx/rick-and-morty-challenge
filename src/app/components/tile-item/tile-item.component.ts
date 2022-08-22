@@ -28,8 +28,14 @@ import { tileStates } from 'src/app/enums/enums';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('tileAnimation', [
-      state(tileStates.show.toString(), style({ opacity: 0 })),
-      state(tileStates.hidden.toString(), style({ opacity: 0 })),
+      state(
+        tileStates.show.toString(),
+        style({ opacity: 1, boxShadow: '0 0 25px #3bf9a1' })
+      ),
+      state(
+        tileStates.hidden.toString(),
+        style({ opacity: 0.8, boxShadow: '0 0 25px #4b9cef' })
+      ),
       transition(
         `${tileStates.show} <=> ${tileStates.hidden}`,
         animate('300ms ease-in')
