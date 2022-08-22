@@ -26,22 +26,7 @@ import { tileStates } from 'src/app/enums/enums';
   templateUrl: './tile-item.component.html',
   styleUrls: ['./tile-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    trigger('tileAnimation', [
-      state(
-        tileStates.show.toString(),
-        style({ opacity: 1, boxShadow: '0 0 25px #3bf9a1' })
-      ),
-      state(
-        tileStates.hidden.toString(),
-        style({ opacity: 0.8, boxShadow: '0 0 25px #4b9cef' })
-      ),
-      transition(
-        `${tileStates.show} <=> ${tileStates.hidden}`,
-        animate('300ms ease-in')
-      ),
-    ]),
-  ],
+  animations: [TileItemComponent.animationTrigger()],
 })
 export class TileItemComponent implements OnInit, OnDestroy {
   hiddenCard: string = '../../../assets/images/card-hidden.jpg';
@@ -158,5 +143,32 @@ export class TileItemComponent implements OnInit, OnDestroy {
    */
   private hideCursor(): void {
     this.renderer.addClass(this.tileRef.nativeElement, 'no-cursor');
+  }
+
+  /**
+   * 
+   * @returns triggerAnimation for card show and hideen with transition and boxShadow
+   */
+
+  private static animationTrigger() {
+    return trigger('tileAnimation', [
+      state(
+        tileStates.show.toString(),
+        style({
+          opacity: 1,
+          boxShadow: '0 0 25px #3bf9a1',
+          transform: ' translateY(-10px)',
+          transition: '0.5s',
+        })
+      ),
+      state(
+        tileStates.hidden.toString(),
+        style({ opacity: 0.8, boxShadow: '0 0 25px #4b9cef' })
+      ),
+      transition(
+        `${tileStates.show} <=> ${tileStates.hidden}`,
+        animate('300ms ease-in')
+      ),
+    ]);
   }
 }
