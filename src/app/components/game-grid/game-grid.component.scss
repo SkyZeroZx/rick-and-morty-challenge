@@ -1,10 +1,9 @@
 .grid-container {
-
   width: 75%;
   @media (max-width: 575.98px) {
     width: 100%;
   }
-  
+
   margin: 0 auto;
   display: flex;
   align-content: space-around;
@@ -16,7 +15,7 @@
     align-items: center;
     align-content: center;
     justify-content: center;
-    padding: .25rem;
+    padding: 0.25rem;
 
     &.easy {
       width: calc(100% / 4);
@@ -32,11 +31,14 @@
   }
 }
 
-
-.loading{
+.loading {
   animation: rotation 8s infinite linear;
+  box-shadow: 0 0 100px rgb(96, 233, 62) !important;
+  background-color: rgb(96, 233, 62);
+  opacity: 0.9;
+  border-radius: 100%;
+  position: relative;
 }
-
 
 @keyframes rotation {
   from {
