@@ -157,7 +157,7 @@ export class TileItemComponent implements OnInit, OnDestroy {
         style({
           opacity: 1,
           boxShadow: '0 0 25px #3bf9a1',
-          transform: ' translateY(-10px)',
+          transform: ' translateY(-5px)',
           transition: '0.5s',
         })
       ),
