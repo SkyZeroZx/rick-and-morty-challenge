@@ -160,7 +160,7 @@ export class GameService {
         Math.random() * this.totalCaracters + 1
       ).toString();
       let exist = false;
-      for (var i = 0; i < this.gameTilesKeys$.length; i++) {
+      for (let i = 0; i < this.gameTilesKeys$.length; i++) {
         if (this.gameTilesKeys$[i] == randomNumber) {
           exist = true;
           break;
