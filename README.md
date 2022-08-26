@@ -2,6 +2,10 @@
 
 Este proyecto fue realizado como parte del Rick And Morty Challenge de Gentleman Programming ("https://cutt.ly/JXUwtTa")
 
+## Demo
+
+<img src="docs/game.gif" width="700"/>
+
 ## Comenzando 🚀
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
