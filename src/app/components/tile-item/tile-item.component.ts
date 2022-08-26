@@ -29,8 +29,6 @@ import { tileStates } from 'src/app/enums/enums';
   animations: [TileItemComponent.animationTrigger()],
 })
 export class TileItemComponent implements OnInit, OnDestroy {
-  hiddenCard: string = '../../../assets/images/card-hidden.jpg';
-  backgroundCard: string = '../../../assets/images/card-hidden.jpg';
   @Input() tile: TileImage;
   @ViewChild('tileRef') tileRef: ElementRef;
 
@@ -58,10 +56,10 @@ export class TileItemComponent implements OnInit, OnDestroy {
     this.hideTileSubscription = this.gameService.hideTiles.subscribe(() => {
       if (this.tileState === tileStates.show && !this.tile.fixed) {
         this.tileState = tileStates.hidden;
-        this.backgroundCard = this.hiddenCard;
         this.cdr.markForCheck();
       }
     });
+
     this.showCursorSubscription = this.gameService.showCursor.subscribe(() => {
       this.showCursor();
     });
@@ -97,14 +95,13 @@ export class TileItemComponent implements OnInit, OnDestroy {
    * fires when the user clicks on a tile and shows the image
    * @param event event emitted on click with the mouse
    */
-  showTile(event: Event, title: any): void {
+  showTile(event: Event): void {
     event.stopPropagation();
     if (
       !this.gameService.tilesBlocked &&
       this.tileState === tileStates.hidden
     ) {
       this.gameService.tilesBlocked = true;
-      this.backgroundCard = title.path;
       this.tileState = tileStates.show;
     }
   }
@@ -146,10 +143,9 @@ export class TileItemComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * 
+   *
    * @returns triggerAnimation for card show and hideen with transition and boxShadow
-   */
-
+  */
   private static animationTrigger() {
     return trigger('tileAnimation', [
       state(
@@ -159,11 +155,17 @@ export class TileItemComponent implements OnInit, OnDestroy {
           boxShadow: '0 0 25px #3bf9a1',
           transform: ' translateY(-5px)',
           transition: '0.5s',
-        })
+          backgroundImage: `url({{ruta}})`,
+        }),
+        { params: { ruta: '../../../assets/images/card-hidden.jpg' } }
       ),
       state(
         tileStates.hidden.toString(),
-        style({ opacity: 0.8, boxShadow: '0 0 25px #4b9cef' })
+        style({
+          opacity: 0.8,
+          boxShadow: '0 0 25px #4b9cef',
+          backgroundImage: `url('../../../assets/images/card-hidden.jpg')`,
+        })
       ),
       transition(
         `${tileStates.show} <=> ${tileStates.hidden}`,
