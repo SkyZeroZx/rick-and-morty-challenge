@@ -151,13 +151,24 @@ export class GameService {
   /**
    * chooses, randomly, the images from the list of tiles that will be used in the game
    */
+
   private initGameTiles(): void {
     this.tilesBlocked$ = false;
     this.gameTilesKeys$ = [];
     while (this.gameTilesKeys$.length < Math.pow(levels.hard, 2) / 2) {
-      this.gameTilesKeys$.push(
-        Math.floor(Math.random() * this.totalCaracters + 1).toString()
-      );
+      let randomNumber = Math.floor(
+        Math.random() * this.totalCaracters + 1
+      ).toString();
+      let exist = false;
+      for (var i = 0; i < this.gameTilesKeys$.length; i++) {
+        if (this.gameTilesKeys$[i] == randomNumber) {
+          exist = true;
+          break;
+        }
+      }
+      if (!exist) {
+        this.gameTilesKeys$[this.gameTilesKeys$.length] = randomNumber;
+      }
     }
   }
 
